@@ -1,32 +1,28 @@
 <template>
-  <v-app app>
-    <nuxt />
+  <v-app app dark>
+    <v-navigation-drawer app></v-navigation-drawer>
+    <v-toolbar app>
+      <v-toolbar-side-icon></v-toolbar-side-icon>
+      <v-btn icon @click="exit">
+        <v-icon>arrow_back</v-icon>
+      </v-btn>
+      <v-toolbar-title>Чат комнаты {{user.room}}</v-toolbar-title>
+    </v-toolbar>
+    <v-content>
+      <div>
+        <nuxt />
+      </div>
+    </v-content>
   </v-app>
 </template>
 
 <script>
+import {mapState} from 'vuex';
 export default {
-  data() {
-    return {
-      clipped: false,
-      drawer: false,
-      fixed: false,
-      items: [
-        {
-          icon: 'apps',
-          title: 'Welcome',
-          to: '/'
-        },
-        {
-          icon: 'bubble_chart',
-          title: 'Inspire',
-          to: '/inspire'
-        }
-      ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js'
+  computed: mapState(['user']),
+  methods: {
+    exit() {
+
     }
   }
 }
